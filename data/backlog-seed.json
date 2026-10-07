@@ -1,0 +1,184 @@
+{
+  "_nota": "Backlog de una tienda en línea sobre Medusa. Tres trampas sembradas a propósito (campo 'trampa'); el campo no se sube a Jira ni se le manda a ningún modelo.",
+  "issues": [
+    {
+      "ref": "S01",
+      "trampa": "cupon",
+      "issuetype": "Bug",
+      "priority": "Low",
+      "summary": "El cupón a veces no se aplica al pagar a meses sin intereses",
+      "description": "Reportado por soporte. Cuando el cliente elige pagar a 6 o 12 MSI con tarjeta de crédito, el cupón que ya aparecía en el carrito desaparece en el último paso y se cobra el precio completo. No pasa con pago de contado. Al menos 14 clientes se quejaron esta semana y varios abandonaron la compra. El reportero lo marcó como Low porque 'hay forma de pagar de contado'."
+    },
+    {
+      "ref": "S02",
+      "issuetype": "Bug",
+      "priority": "Medium",
+      "summary": "Error 500 intermitente al confirmar pedido con OXXO Pay",
+      "description": "Aproximadamente 1 de cada 20 intentos de confirmar un pedido con OXXO Pay devuelve error 500. El cliente no recibe la referencia de pago y el pedido queda en estado pendiente sin forma de pagarlo."
+    },
+    {
+      "ref": "S03",
+      "issuetype": "Story",
+      "priority": "Medium",
+      "summary": "Mostrar el desglose de meses sin intereses en el checkout",
+      "description": "Como cliente quiero ver cuánto pagaría por mes a 3, 6 y 12 MSI antes de elegir el método de pago.\n\nCriterios de aceptación:\n- Se muestra el monto mensual por plazo disponible según el banco.\n- Se actualiza al aplicar cupones o cambiar el carrito."
+    },
+    {
+      "ref": "S04",
+      "issuetype": "Bug",
+      "priority": "Medium",
+      "summary": "El carrito se vacía al iniciar sesión",
+      "description": "Si un cliente agrega productos como invitado y después inicia sesión, el carrito queda vacío. Los productos no se fusionan con el carrito guardado de su cuenta. Pasa en web y en la app."
+    },
+    {
+      "ref": "S05",
+      "issuetype": "Bug",
+      "priority": "Medium",
+      "summary": "El costo de envío no se recalcula al cambiar el código postal",
+      "description": "En el checkout, si el cliente cambia el código postal de la dirección de envío, el costo de envío se queda con el valor del código postal anterior. Hemos cobrado de menos envíos a zonas extendidas."
+    },
+    {
+      "ref": "S06",
+      "issuetype": "Task",
+      "priority": "Medium",
+      "summary": "Agregar reintentos al webhook de confirmación de pago",
+      "description": "Si nuestro servicio está caído cuando llega el webhook del procesador de pagos, el pedido se queda sin marcar como pagado. Agregar cola con reintentos exponenciales y alerta después de 5 fallos."
+    },
+    {
+      "ref": "S07",
+      "issuetype": "Story",
+      "priority": "Medium",
+      "summary": "Guardar tarjeta para compras futuras",
+      "description": "Como cliente recurrente quiero guardar mi tarjeta tokenizada para no capturarla en cada compra.\n\nCriterios de aceptación:\n- Tokenización con el procesador actual, nunca guardamos el número.\n- El cliente puede borrar sus tarjetas desde su cuenta."
+    },
+    {
+      "ref": "S08",
+      "issuetype": "Bug",
+      "priority": "Medium",
+      "summary": "Stock negativo cuando dos clientes compran la última pieza al mismo tiempo",
+      "description": "Si dos clientes confirman al mismo tiempo el último artículo disponible, ambos pedidos pasan y el inventario queda en -1. Pasó 3 veces en el Hot Sale."
+    },
+    {
+      "ref": "S09",
+      "issuetype": "Task",
+      "priority": "Medium",
+      "summary": "Sincronizar el inventario de la bodega de Monterrey cada 15 minutos",
+      "description": "Hoy la bodega de Monterrey sincroniza inventario una vez al día. Cambiar el job para que corra cada 15 minutos y registre diferencias."
+    },
+    {
+      "ref": "S10",
+      "issuetype": "Story",
+      "priority": "Medium",
+      "summary": "Alerta de bajo inventario para el equipo de compras",
+      "description": "Como comprador quiero recibir un correo cuando un producto baje de 10 piezas para pedir más a tiempo."
+    },
+    {
+      "ref": "S11",
+      "issuetype": "Bug",
+      "priority": "Medium",
+      "summary": "El listado de categorías tarda más de 6 segundos en cargar",
+      "description": "La página de categorías con más de 200 productos tarda entre 6 y 9 segundos en el primer render. Analytics muestra que el 40% de los visitantes se va antes de que cargue."
+    },
+    {
+      "ref": "S12",
+      "issuetype": "Task",
+      "priority": "Medium",
+      "summary": "Cachear el endpoint de productos destacados",
+      "description": "El endpoint de productos destacados de la home se consulta en cada visita y hace 4 consultas a base de datos. Cachearlo 5 minutos."
+    },
+    {
+      "ref": "S13",
+      "issuetype": "Bug",
+      "priority": "Medium",
+      "summary": "Imágenes de producto sin compresión de más de 3 MB",
+      "description": "Varias imágenes subidas por el equipo de contenido pesan más de 3 MB y se sirven sin compresión ni formato moderno. Afecta la velocidad de carga en móvil."
+    },
+    {
+      "ref": "S14",
+      "issuetype": "Story",
+      "priority": "Medium",
+      "summary": "Filtro por talla en el catálogo de ropa",
+      "description": "Como cliente quiero filtrar el catálogo de ropa por talla para ver solo lo que hay disponible en la mía.\n\nCriterios de aceptación:\n- El filtro solo muestra tallas con inventario.\n- Se puede combinar con el filtro de color."
+    },
+    {
+      "ref": "S15",
+      "issuetype": "Task",
+      "priority": "Medium",
+      "summary": "Actualizar Medusa a la última versión menor",
+      "description": "Estamos dos versiones menores atrás. Actualizar, correr la suite completa y revisar el changelog por cambios en el módulo de pagos."
+    },
+    {
+      "ref": "S16",
+      "issuetype": "Task",
+      "priority": "Medium",
+      "summary": "Eliminar los feature flags viejos del Hot Sale",
+      "description": "Quedan 7 feature flags del Hot Sale de mayo que ya están siempre encendidos. Quitarlos del código y de la configuración."
+    },
+    {
+      "ref": "S17",
+      "issuetype": "Task",
+      "priority": "Medium",
+      "summary": "Agregar tests de integración al flujo de devoluciones",
+      "description": "El flujo de devoluciones no tiene tests de integración. Cubrir: devolución total, parcial y con cupón aplicado."
+    },
+    {
+      "ref": "S18",
+      "issuetype": "Task",
+      "priority": "Medium",
+      "summary": "Migrar los logs a formato JSON estructurado",
+      "description": "Los logs del backend son texto libre y es difícil buscarlos. Migrar a JSON estructurado con request id."
+    },
+    {
+      "ref": "S19",
+      "issuetype": "Story",
+      "priority": "Medium",
+      "summary": "Programa de lealtad: puntos por compra",
+      "description": "Como cliente quiero acumular puntos por cada compra y canjearlos por descuentos.\n\nCriterios de aceptación:\n- 1 punto por cada 10 pesos.\n- Los puntos se ven en la cuenta del cliente."
+    },
+    {
+      "ref": "S20",
+      "issuetype": "Bug",
+      "priority": "Medium",
+      "summary": "El correo de confirmación llega con acentos rotos",
+      "description": "En Outlook, el correo de confirmación de pedido muestra 'ConfirmaciÃ³n' en lugar de 'Confirmación'. Parece un problema de codificación UTF-8 en la plantilla."
+    },
+    {
+      "ref": "S21",
+      "issuetype": "Story",
+      "priority": "Medium",
+      "summary": "Banner con cuenta regresiva para el Buen Fin",
+      "description": "Como equipo de marketing queremos un banner en la home con cuenta regresiva al inicio del Buen Fin, configurable desde el admin."
+    },
+    {
+      "ref": "S22",
+      "issuetype": "Bug",
+      "priority": "Medium",
+      "summary": "El admin no exporta pedidos a CSV si hay más de 1,000 filas",
+      "description": "Al exportar pedidos del mes a CSV desde el admin, si hay más de 1,000 filas la descarga falla con timeout. Finanzas lo usa para el cierre mensual."
+    },
+    {
+      "ref": "S23",
+      "issuetype": "Task",
+      "priority": "Medium",
+      "summary": "Documentar el proceso de deploy para nuevos devs",
+      "description": "El proceso de deploy solo lo conocen dos personas. Documentarlo paso a paso en la wiki."
+    },
+    {
+      "ref": "S24",
+      "trampa": "duplicado",
+      "duplicado_de": "S04",
+      "issuetype": "Bug",
+      "priority": "Medium",
+      "summary": "Al hacer login en la app se pierden los productos que había agregado",
+      "description": "Varios usuarios de la app dicen que agregan cosas sin estar logueados y cuando entran a su cuenta ya no está nada. Tienen que volver a buscar todo."
+    },
+    {
+      "ref": "S25",
+      "trampa": "vago",
+      "issuetype": "Story",
+      "priority": "Medium",
+      "summary": "Mejorar la página de producto",
+      "description": "Se ve fea, hay que mejorarla."
+    }
+  ]
+}

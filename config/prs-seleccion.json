@@ -1,0 +1,18 @@
+{
+  "_nota": "Los 12 PRs reales de medusajs/medusa. La columna 'esperado' es para quien presenta; nunca se le manda a Jev.",
+  "repo": "medusajs/medusa",
+  "prs": [
+    { "number": 17148, "tipo": "Docs: links rotos", "esperado": "lint_only" },
+    { "number": 16908, "tipo": "Renombrar un parámetro mal escrito", "esperado": "lint_only o haiku" },
+    { "number": 17145, "tipo": "Bump de dependencia por aviso de seguridad", "esperado": "lint_only" },
+    { "number": 16742, "tipo": "Dashboard: links de filas", "esperado": "haiku" },
+    { "number": 16496, "tipo": "Caching: quitar cómputo cuadrático", "esperado": "haiku o sonnet" },
+    { "number": 16533, "tipo": "Tests inestables en varios módulos", "esperado": "sonnet" },
+    { "number": 16587, "tipo": "Refactor: renombrar entidades de búsqueda", "esperado": "sonnet" },
+    { "number": 16722, "tipo": "Pagos: autocaptura solo si se autorizó", "esperado": "opus" },
+    { "number": 16228, "tipo": "Pagos: errores de firma del webhook de Stripe", "esperado": "opus" },
+    { "number": 16890, "tipo": "Auth: contraseña al re-registrar identidad", "esperado": "opus" },
+    { "number": 16351, "tipo": "Migraciones: marcar como completadas solo si corrieron bien", "esperado": "opus" },
+    { "number": 16129, "tipo": "Checkout: validar moneda del carrito contra la región", "esperado": "sonnet u opus" }
+  ]
+}

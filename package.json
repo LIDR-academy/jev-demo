@@ -1,0 +1,30 @@
+{
+  "name": "jev-demo-antes-despues",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jev decide, Claude trabaja. Priorización de backlog en Jira y routing de revisión de PRs, cada uno con su antes y después medido.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "jira:seed": "node scripts/jira-seed.ts",
+    "jira:reset": "node scripts/jira-reset.ts",
+    "jira:snapshot": "node scripts/jira-snapshot.ts",
+    "antes:backlog": "node scripts/antes-backlog.ts",
+    "priorizar": "node scripts/priorizar.ts",
+    "prs:fetch": "node scripts/fetch-prs.ts",
+    "antes:prs": "node scripts/antes-prs.ts",
+    "route": "node scripts/route.ts",
+    "despues:prs": "node scripts/despues-prs.ts",
+    "hallazgos:init": "node scripts/hallazgos-init.ts",
+    "compare": "node scripts/compare.ts",
+    "smoke": "node scripts/smoke.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  },
+  "_nota": "No hace falta npm install para correr la demo: Node 22.18+ ejecuta TypeScript directo. Las devDependencies solo sirven para npm run typecheck."
+}

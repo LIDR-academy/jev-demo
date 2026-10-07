@@ -1,0 +1,16 @@
+{
+  "_nota": "Umbrales de las reglas en código. Se ajustan probando; nunca se ajustan para forzar un resultado concreto.",
+  "backlog": {
+    "piso_bloquea_ingresos": 0.8,
+    "duplicado": 0.6,
+    "confianza_minima_prioridad": 0.5,
+    "listo_para_desarrollo_minimo": 0.35,
+    "concurrencia": 8
+  },
+  "prs": {
+    "piso_sensible": 0.3,
+    "zona_gris_confianza": 0.5,
+    "concurrencia_jev": 8,
+    "concurrencia_revisiones": 6
+  }
+}

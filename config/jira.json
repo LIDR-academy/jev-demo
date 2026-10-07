@@ -1,0 +1,7 @@
+{
+  "project": "SHOP",
+  "label_demo": "demo-jev",
+  "label_soporte": "demo-soporte",
+  "labels_jev": ["jev-priorizado", "jev-bloquea-ingresos", "jev-duplicado", "needs-human-review"],
+  "jql_backlog": "project = SHOP AND labels = demo-jev AND statusCategory != Done ORDER BY priority DESC, created ASC"
+}

@@ -1,0 +1,18 @@
+{
+  "_verificado": "2026-10-06. Vuelve a verificar la semana de la demo.",
+  "_fuentes": [
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://docs.typesafe.ai/models"
+  ],
+  "claude": {
+    "haiku": { "id": "claude-haiku-4-5-20251001", "label": "Haiku 4.5", "input_per_mtok": 1, "output_per_mtok": 5 },
+    "sonnet": { "id": "claude-sonnet-5-5", "label": "Sonnet 5.5", "input_per_mtok": 2, "output_per_mtok": 10 },
+    "opus": { "id": "claude-opus-5-5", "label": "Opus 5.5", "input_per_mtok": 4, "output_per_mtok": 20 }
+  },
+  "jev": {
+    "model": "jev-latest",
+    "input_per_mtok": 0.042,
+    "output_per_mtok": 0,
+    "_nota": "Jev cobra solo tokens de entrada; la salida es gratis."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "_nota": "Lo que le preguntamos a Jev por cada PR. Jev ve solo metadatos (título, descripción, labels, archivos y líneas), nunca el diff.",
+  "questions": {
+    "reviewer": {
+      "type": "choice",
+      "instructions": "Who should review this pull request, given its title, description and the files it changes?",
+      "criteria": {
+        "lint_only": "Documentation, translations, comments, version bumps of dependencies, or pure renames with no behavior change. Automated checks are enough.",
+        "haiku": "Small, localized change in one area with low risk. A fast, inexpensive model can review it.",
+        "sonnet": "Changes logic in a meaningful way or spans several files or modules, but does not touch money, identity or data integrity.",
+        "opus": "Can lose money, break security or authentication, corrupt data or change database migrations. Needs the strongest reviewer."
+      }
+    },
+    "risk": {
+      "type": "score",
+      "instructions": "How risky is it to merge this pull request without a careful review?",
+      "criteria": [
+        "Cosmetic: no runtime effect.",
+        "Low: a mistake would cause a minor, easily noticed bug.",
+        "Moderate: a mistake could break a feature for some users.",
+        "High: a mistake could break checkout, orders or a core flow for many users.",
+        "Critical: a mistake could lose money, leak data or corrupt records."
+      ]
+    },
+    "sensitive": {
+      "type": "noul",
+      "instructions": "Does this pull request change code that handles payments, captures, refunds, prices or currency, authentication, authorization, secrets, or database migrations?"
+    },
+    "cross_module": {
+      "type": "noul",
+      "instructions": "Does reviewing this pull request require understanding how several modules or packages interact?"
+    }
+  }
+}

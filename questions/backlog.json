@@ -1,0 +1,54 @@
+{
+  "_nota": "Preguntas a Jev por cada issue. Las instrucciones van en inglés porque es donde Jev rinde mejor; los tickets van en español. El estado que ve Jev es { sprint_goal, issue, other_issues }. 'duplicate_of' se completa en código con los demás issues del backlog.",
+  "questions": {
+    "issue_type": {
+      "type": "choice",
+      "instructions": "What kind of work does `issue` describe?",
+      "criteria": {
+        "bug": "Something that exists today is broken or behaves incorrectly.",
+        "feature": "New capability or improvement requested by customers or the business.",
+        "tech_debt": "Internal work: upgrades, refactors, tests, cleanup, observability, documentation.",
+        "unclear": "The issue does not give enough information to tell."
+      }
+    },
+    "priority": {
+      "type": "choice",
+      "instructions": "Given `sprint_goal`, what priority should `issue` get in this sprint? Judge the impact described in the issue, not the priority the reporter set.",
+      "criteria": {
+        "Highest": "Directly blocks the sprint goal or is actively losing customers or money right now. Must be done first.",
+        "High": "Strongly supports the sprint goal or prevents a likely serious problem soon.",
+        "Medium": "Useful work with moderate impact that is not central to the sprint goal.",
+        "Low": "Small impact, nice to have, or unrelated to the sprint goal.",
+        "Lowest": "Can wait indefinitely."
+      }
+    },
+    "business_impact": {
+      "type": "score",
+      "instructions": "How much business impact does `issue` describe?",
+      "criteria": [
+        "None: internal or cosmetic, no customer or revenue effect.",
+        "Minor: small inconvenience for a few customers.",
+        "Moderate: noticeable friction for many customers or a team.",
+        "Major: customers fail to complete important actions or the business loses money.",
+        "Critical: widespread loss of sales, money or customer trust right now."
+      ]
+    },
+    "blocks_revenue": {
+      "type": "noul",
+      "instructions": "Does `issue` describe a problem that stops customers from completing purchases, charges them incorrectly, or makes the store lose money?"
+    },
+    "ready_for_dev": {
+      "type": "noul",
+      "instructions": "Does `issue` contain enough concrete detail (what happens, where, expected behavior or acceptance criteria) for a developer to start working without asking questions?"
+    },
+    "is_duplicate": {
+      "type": "noul",
+      "instructions": "Does `issue` describe the same underlying problem as one of the issues in `other_issues`, even if worded differently?"
+    },
+    "duplicate_of": {
+      "type": "choice",
+      "instructions": "Which issue in `other_issues` describes the same underlying problem as `issue`? Choose none if no issue does.",
+      "criteria": "<<se genera en código: una opción por cada issue de other_issues, más 'none'>>"
+    }
+  }
+}
