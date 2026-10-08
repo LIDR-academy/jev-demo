@@ -94,7 +94,8 @@ out/                resultados y caché (no se sube al repo)
 ## Problemas comunes
 
 - **`Unknown file extension ".ts"`:** tu Node es anterior a 22.18. Actualízalo o corre `npx tsx scripts/<archivo>.ts`.
-- **Jira responde 400 al crear:** el proyecto no tiene ese tipo de issue o el campo de prioridad no está en la pantalla de creación. Usa un proyecto company-managed.
+- **Jira responde 400 al crear:** el proyecto no tiene ese tipo de issue o el campo de prioridad no está en la pantalla de creación. Si tu Jira está en español, agrega a `config/jira.json` `"issuetypes": {"Bug": "Error", "Story": "Historia", "Task": "Tarea"}`.
+- **`claude -p` dice "Credit balance is too low":** pasa si tienes `ANTHROPIC_API_KEY` sin saldo. Usa `CLAUDE_ENGINE=cli`: los scripts le quitan la llave a `claude -p` para que use tu sesión de Claude Code.
 - **Jev responde 422:** una pregunta está mal formada; el mensaje dice cuál campo.
 - **Jev responde 429:** el script reintenta solo. Si persiste, baja `concurrencia` en `config/thresholds.json`.
 - **`No hay respuesta guardada para --replay`:** ese comando nunca se corrió sin `--replay` con la misma entrada.

@@ -3,8 +3,19 @@ import { readJson, rootPath } from "./env.ts";
 // API REST de Jira Cloud v3. Se usa para lo que tiene que ser rápido (escribir 28 decisiones)
 // y para reset/siembra de respaldo. La siembra principal y la creación desde el correo van por el MCP.
 
-export type JiraConfig = { project: string; label_demo: string; label_soporte: string; labels_jev: string[]; jql_backlog: string };
+export type JiraConfig = {
+  project: string;
+  label_demo: string;
+  label_soporte: string;
+  labels_jev: string[];
+  jql_backlog: string;
+  /** Nombre del tipo en el proyecto, por si Jira está en otro idioma (Bug → Error). */
+  issuetypes?: Record<string, string>;
+};
 export const JIRA = readJson<JiraConfig>(rootPath("config", "jira.json"));
+
+const toJiraType = (t: string) => JIRA.issuetypes?.[t] ?? t;
+const fromJiraType = (t: string) => Object.entries(JIRA.issuetypes ?? {}).find(([, v]) => v === t)?.[0] ?? t;
 
 export type Issue = {
   key: string;
@@ -81,7 +92,7 @@ export async function searchIssues(jql: string): Promise<Issue[]> {
         key: i.key,
         summary: i.fields.summary,
         description: adfToText(i.fields.description).trim(),
-        issuetype: i.fields.issuetype?.name ?? "",
+        issuetype: fromJiraType(i.fields.issuetype?.name ?? ""),
         priority: i.fields.priority?.name ?? "",
         labels: i.fields.labels ?? [],
       });
@@ -97,7 +108,7 @@ export async function createIssue(i: { summary: string; description: string; iss
       project: { key: JIRA.project },
       summary: i.summary,
       description: textToAdf(i.description),
-      issuetype: { name: i.issuetype },
+      issuetype: { name: toJiraType(i.issuetype) },
       priority: { name: i.priority },
       labels: i.labels,
     },

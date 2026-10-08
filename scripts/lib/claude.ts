@@ -112,7 +112,9 @@ function spawnClaude(modelId: string, system: string, prompt: string): Promise<H
     "--no-session-persistence",
   ];
   return new Promise((resolve, reject) => {
-    const child = spawn("claude", args, { cwd: sandbox, env: process.env, stdio: ["pipe", "pipe", "pipe"] });
+    // Sin ANTHROPIC_API_KEY: si no, claude -p la usa en lugar de la sesión de Claude Code.
+    const { ANTHROPIC_API_KEY: _, ...env } = process.env;
+    const child = spawn("claude", args, { cwd: sandbox, env, stdio: ["pipe", "pipe", "pipe"] });
     let stdout = "";
     let stderr = "";
     const timer = setTimeout(() => child.kill("SIGTERM"), 10 * 60_000);
